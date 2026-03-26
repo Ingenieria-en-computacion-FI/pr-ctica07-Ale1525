@@ -2,7 +2,7 @@
 #define __LISTA_SIMPLE_H__
 
 #include <stddef.h>
-
+#include <stdbool.h>
 typedef struct Nodo {
     void* dato;
     struct Nodo* siguiente;
@@ -17,6 +17,11 @@ typedef struct {
 typedef int (*CompararFunc)(void*, void*);
 typedef void (*ImprimirFunc)(void*);
 
+//funciones para nodo
+Nodo* crearNodo(void *dato, size_t size);
+void LiberarNodo(Nodo* n);
+bool ModificarNodo(Nodo* n, void* d, size_t size);
+
 // Crear / estado
 Lista* crearLista();
 int esVacia(Lista* lista);
@@ -24,11 +29,13 @@ int esVacia(Lista* lista);
 // Inserciones
 void insertarInicio(Lista* lista, void* dato, size_t size);
 void insertarFinal(Lista* lista, void* dato, size_t size);
-
+void insertarPorposicion(Lista* lista, void* dato, size_t size, int pos);
 // Eliminaciones
+void eliminarInicio(Lista* lista);
+void eliminarFinal(Lista* lista);
 void eliminarPorPosicion(Lista* lista, int pos);
 void eliminarPorElemento(Lista* lista, void* dato, CompararFunc cmp);
-
+void eliminarTodosIguales(lista* lista, void* dato, CompararFunc cmp);
 // Búsquedas
 void* buscarPorPosicion(Lista* lista, int pos);
 int buscarPorElemento(Lista* lista, void* dato, CompararFunc cmp);
