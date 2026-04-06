@@ -1,7 +1,7 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include "lista_simple.h"
-//Funciones para nodo
+//Funciones para nodo hola
 Nodo* crearNodo(void *dato, size_t size){
     Nodo *nuevo= (Nodo*)malloc(sizeof(Nodo))
     if(nuevo!=NULL){
